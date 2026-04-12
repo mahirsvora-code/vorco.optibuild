@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>OptiBuild - BOQ + Feasibility</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<div class="page-wrap">
+			<header class="top-meta container">
+				<p class="desk-label">OptiBuild Feasibility Desk | Ahmedabad</p>
+				<time id="liveClock" class="live-clock" aria-label="Current time in Ahmedabad, India"></time>
+			</header>
+
+			<nav class="top-nav container card-shell">
+				<div>
+					<p class="logo">OPTIBUILD</p>
+					<p class="logo-sub">Residential BOQ, underwriting intelligence, and execution planning for faster pre-construction decisions</p>
+					<div class="nav-meta" aria-label="Platform highlights">
+						<span class="nav-chip">Live Feasibility</span>
+						<span class="nav-chip">Ahmedabad-ready</span>
+						<span class="nav-chip">Investor Outputs</span>
+					</div>
+				</div>
+				<div class="nav-links">
+					<a href="#calculator">Calculator</a>
+				</div>
+			</nav>
+
+			<section class="hero-grid container">
+				<article class="hero-main card-shell">
+					<p class="hero-kicker">OPTIBUILD</p>
+					<h1>Build with confidence before you break ground.</h1>
+					<p class="hero-copy">
+						From land buy to last slab, OptiBuild helps you stress-test costs, financing, and execution timelines in one clear decision workspace.
+					</p>
+					<div class="hero-proof">
+						<article class="hero-proof-card">
+							<p class="proof-value">10 min</p>
+							<p class="proof-label">to first feasibility pass</p>
+						</article>
+						<article class="hero-proof-card">
+							<p class="proof-value">100%</p>
+							<p class="proof-label">traceable cost-to-phase mapping</p>
+						</article>
+						<article class="hero-proof-card">
+							<p class="proof-value">Live</p>
+							<p class="proof-label">sensitivity and delay impact checks</p>
+						</article>
+					</div>
+					<div class="hero-actions">
+						<a class="soft-btn" href="#calculator">Start Project Modeling</a>
+					</div>
+				</article>
+
+				<aside class="hero-side card-shell">
+					<article class="feature-card">
+						<p class="feature-tag">Capital Planning</p>
+						<h3>Faster pre-investment decisions</h3>
+						<p>Get cost stack, debt pressure, and return signals without waiting for full consultant rounds.</p>
+					</article>
+					<article class="feature-card">
+						<p class="feature-tag">Execution Control</p>
+						<h3>Phase-wise visibility you can act on</h3>
+						<p>Track monthly burn, slab obligations, and remaining project cost in one timeline.</p>
+					</article>
+					<article class="feature-card">
+						<p class="feature-tag">Decision Ready</p>
+						<h3>Investor-grade output</h3>
+						<p>Generate a structured report with reconciliation checks, risk flags, and funding gap focus.</p>
+					</article>
+				</aside>
+			</section>
+
+			<section id="calculator" class="calculator-shell container card-shell">
+				<div class="section-head">
+					<h2>BOQ &amp; Feasibility Calculator</h2>
+					<p>Analyze project cost, feasibility, scenarios, and editable BOQ rates.</p>
+				</div>
+
+				<div class="layout">
+					<section class="form-card">
+						<div class="form-ux-head">
+							<p class="form-title">Project Input Workspace</p>
+							<p class="muted">You can run aggressive scenarios. The tool will warn, not block.</p>
+							<div class="form-jump" aria-label="Quick jump between input sections">
+								<a href="#sec-identity">Project Identity</a>
+								<a href="#sec-geometry">Core Geometry</a>
+								<a href="#sec-mix">Unit Mix</a>
+								<a href="#sec-tools">Smart Tools</a>
+								<a href="#sec-rate">Rate + Costing</a>
+								<a href="#sec-land">Land + Statutory</a>
+								<a href="#sec-sales">Sales + Finance</a>
+								<a href="#sec-model">Real-World Modeling</a>
+							</div>
+						</div>
+
+						<div class="unit-switch" role="group" aria-label="Unit switch">
+							<button type="button" class="unit-btn active" data-unit="sqft">Sq Ft</button>
+							<button type="button" class="unit-btn" data-unit="sqm">Sq M</button>
+							<button type="button" class="unit-btn" data-unit="sqyd">Sq Yd</button>
+						</div>
+
+						<form id="projectForm">
+							<h3 id="sec-identity">Project Identity</h3>
+							<div class="grid-3">
+								<label>
+									Project Name
+									<input type="text" name="projectName" value="" placeholder="Example: Riverfront Residences" />
+								</label>
+								<label>
+									Location / City
+									<input type="text" name="city" value="Ahmedabad" placeholder="Example: Ahmedabad" />
+								</label>
+								<label>
+									Developer / Client
+									<input type="text" name="developerName" value="VORCO" placeholder="Example: VORCO" />
+								</label>
+							</div>
+
+							<h3 id="sec-geometry">Core Geometry</h3>
+							<label>
+								Plot Area (<span id="plotUnit">sq ft</span>)
+								<input type="number" name="plotArea" min="0" step="1" value="0" />
+							</label>
+							<label>
+								Built-up Area BUA (<span id="buaUnit">sq ft</span>)
+								<input type="number" name="bua" min="0" step="1" value="0" required />
+							</label>
+
+							<div class="grid-3">
+								<label>
+										Residential Floors (from 1)
+									<input type="number" name="floors" min="1" max="30" value="" />
+								</label>
+								<label>
+									Basements
+									<input type="number" name="basements" min="0" max="3" value="0" />
+								</label>
+								<label>
+									Flats / Floor
+									<input type="number" name="flatsPerFloor" min="0" max="20" value="0" />
+								</label>
+							</div>
+
+							<div class="grid-4">
+								<label>
+									Parking Slots
+									<input type="number" name="parkingSlots" min="0" step="1" value="0" />
+								</label>
+								<label>
+									BHK Type
+									<select name="bhkType">
+										<option value="0" selected>None</option>
+										<option value="1">1 BHK</option>
+										<option value="2">2 BHK</option>
+										<option value="3">3 BHK</option>
+										<option value="4">4 BHK</option>
+										<option value="5">5 BHK</option>
+									</select>
+								</label>
+								<label>
+									SBA Loading % over BUA
+									<input type="number" name="loadingPct" min="0" max="60" step="1" value="0" />
+								</label>
+								<label>
+									Carpet % of BUA (for area stack)
+									<input type="number" name="carpetRatio" min="0" max="90" step="1" value="0" />
+								</label>
+							</div>
+
+							<h3 id="sec-mix">Unit Mix Planner</h3>
+							<label class="toggle-row">
+								<input id="mixPlannerToggle" type="checkbox" />
+								Enable Unit Mix Planner
+							</label>
+							<div id="mixPlannerTools" class="smart-tools hidden">
+								<p class="muted">Split the project into a BHK mix. The planner auto-allocates area and shows revenue impact.</p>
+								<div class="grid-3 slider-grid">
+									<label>
+										1 BHK Share %
+										<input type="number" name="mix1Pct" min="0" max="100" step="1" value="0" />
+									</label>
+									<label>
+										2 BHK Share %
+										<input type="number" name="mix2Pct" min="0" max="100" step="1" value="0" />
+									</label>
+									<label>
+										3 BHK Share %
+										<input type="number" name="mix3Pct" min="0" max="100" step="1" value="0" />
+									</label>
+									<label>
+										4 BHK Share %
+										<input type="number" name="mix4Pct" min="0" max="100" step="1" value="0" />
+									</label>
+									<label>
+										5 BHK Share %
+										<input type="number" name="mix5Pct" min="0" max="100" step="1" value="0" />
+									</label>
+									<div class="mix-note">Mix uses total units from floors × flats per floor.</div>
+								</div>
+							</div>
+
+								<div class="area-guide">
+									<p><strong>Area logic:</strong> Carpet area is the usable inside space. Built-up area adds walls and balcony/utility portions. Super built-up area adds the common-area share. Pricing is applied on SBA, not BUA.</p>
+								</div>
+
+							<h3 id="sec-tools">Optional Smart Tools</h3>
+							<label class="toggle-row">
+								<input id="smartToggle" type="checkbox" />
+								Enable Presets &amp; Scenario Sliders
+							</label>
+							<div id="smartTools" class="smart-tools hidden">
+								<div class="preset-buttons">
+									<button type="button" class="preset-btn" data-preset="conservative">Conservative</button>
+									<button type="button" class="preset-btn" data-preset="balanced">Balanced</button>
+									<button type="button" class="preset-btn" data-preset="aggressive">Aggressive</button>
+								</div>
+
+								<div class="grid-3 slider-grid">
+									<label>
+										Sale Sensitivity
+										<input id="quickSaleFactor" type="range" min="80" max="120" step="1" value="100" />
+										<span id="quickSaleFactorValue" class="inline-value">100%</span>
+									</label>
+									<label>
+										Sold % Adjustment
+										<input id="quickSoldAdj" type="range" min="-20" max="20" step="1" value="0" />
+										<span id="quickSoldAdjValue" class="inline-value">+0%</span>
+									</label>
+									<label>
+										Escalation Adjustment
+										<input id="quickEscalationAdj" type="range" min="-5" max="10" step="0.5" value="0" />
+										<span id="quickEscalationAdjValue" class="inline-value">+0%</span>
+									</label>
+								</div>
+							</div>
+
+							<label class="toggle-row">
+								<input id="timelineToggle" name="advancedTimeline" type="checkbox" />
+								Enable Delay Simulation &amp; Cashflow Timeline
+							</label>
+
+							<label class="toggle-row">
+								<input id="heatmapToggle" type="checkbox" />
+								Enable Sensitivity Heatmap
+							</label>
+
+							<h3 id="sec-rate">Rate + Costing</h3>
+							<label>
+								Ahmedabad Market Preset (2026)
+								<select id="marketPreset" name="marketPreset">
+									<option value="custom" selected>Custom</option>
+									<option value="economy">Economy (1900-2200)</option>
+									<option value="mid">Mid (2200-2700)</option>
+									<option value="premium">Premium (2700-3400)</option>
+								</select>
+							</label>
+							<div class="grid-4">
+								<label>
+									Sensitivity Case
+									<select name="sensitivityCase" id="sensitivityCase">
+										<option value="base" selected>Base</option>
+										<option value="optimistic">Optimistic</option>
+										<option value="stressed">Stressed</option>
+									</select>
+								</label>
+								<label>
+									Rate Base (Rs / sq ft)
+									<input type="number" name="rateBase" min="0" step="1" value="2450" />
+								</label>
+								<label>
+									Rate Optimistic (Rs / sq ft)
+									<input type="number" name="rateOptimistic" min="0" step="1" value="2200" />
+								</label>
+								<label>
+									Rate Stressed (Rs / sq ft)
+									<input type="number" name="rateStressed" min="0" step="1" value="2700" />
+								</label>
+							</div>
+							<div class="grid-2">
+								<label>
+									Custom Rate (Rs / sq ft)
+									<input type="number" name="customRate" min="0" step="1" value="0" />
+								</label>
+							</div>
+							<label>
+								Escalation %
+									<input type="number" name="escalationPct" min="0" max="20" step="0.5" value="0" />
+							</label>
+
+							<h3 id="sec-land">Land + Statutory</h3>
+							<div class="grid-3">
+								<label>
+									Land Rate (Rs / sq ft)
+									<input type="number" name="landRate" min="0" step="1" value="0" />
+								</label>
+								<label>
+									Land Cost Override (Rs)
+									<input type="number" name="landCost" min="0" step="1000" value="0" />
+								</label>
+								<label>
+									Stamp + Reg %
+									<input type="number" name="stampPct" min="0" max="15" step="0.5" value="7" />
+								</label>
+							</div>
+							<label>
+								Legal/Approval Cost (Rs)
+								<input type="number" name="legalCost" min="0" step="1000" value="0" />
+							</label>
+							<label>
+								Architect Fee (% of Total Project Cost)
+								<input type="number" name="architectPct" min="0" max="15" step="0.1" value="0" />
+							</label>
+
+							<h3 id="sec-sales">Sales + Finance</h3>
+							<label>
+								Sale Price (Rs / sq ft on SBA)
+								<input id="salePrice" type="range" name="salePrice" min="0" max="20000" step="100" value="0" />
+								<span id="salePriceValue" class="inline-value"></span>
+							</label>
+
+							<div class="grid-3">
+								<label>
+									Inventory Sold % (on SBA)
+									<input type="number" name="soldPct" min="0" max="100" step="1" value="0" />
+								</label>
+								<label>
+									GST %
+									<input type="number" name="gstPct" min="0" max="18" step="0.5" value="0" />
+								</label>
+								<label>
+									Broker %
+									<input type="number" name="brokerPct" min="0" max="5" step="0.1" value="0" />
+								</label>
+							</div>
+
+							<div class="grid-3">
+								<label>
+									Loan %
+									<input type="number" name="loanPct" min="0" max="90" step="1" value="0" />
+								</label>
+								<label>
+									Interest %
+									<input type="number" name="interestPct" min="0" max="24" step="0.1" value="0" />
+								</label>
+								<label>
+									Duration (months)
+									<input type="number" name="durationMonths" min="0" max="72" step="1" value="0" />
+								</label>
+							</div>
+
+							<h3 id="sec-model">Real-World Modeling</h3>
+							<div class="grid-3">
+								<label>
+									Planning / Launch Delay (months)
+									<input type="number" name="delayMonths" min="0" max="24" step="1" value="0" />
+								</label>
+								<label>
+									Sales Realization Window (months)
+									<input type="number" name="salesMonths" min="0" max="60" step="1" value="0" />
+								</label>
+								<label>
+									Sales Start Offset (months)
+									<input type="number" name="salesStartOffset" min="0" max="24" step="1" value="0" />
+								</label>
+							</div>
+							<div class="grid-3">
+								<label>
+									Approval Delay (months)
+									<input type="number" name="approvalDelayMonths" min="0" max="24" step="1" value="0" />
+								</label>
+								<label>
+									Execution Delay (months)
+									<input type="number" name="executionDelayMonths" min="0" max="24" step="1" value="0" />
+								</label>
+								<label>
+									Sales Delay (months)
+									<input type="number" name="salesDelayMonths" min="0" max="24" step="1" value="0" />
+								</label>
+							</div>
+
+							<div class="grid-3">
+								<label>
+									EMI Moratorium (months)
+									<input type="number" name="moratoriumMonths" min="0" max="36" step="1" value="0" />
+								</label>
+								<label>
+									Prepayment from Sales %
+									<input type="number" name="prepaymentPct" min="0" max="100" step="1" value="0" />
+								</label>
+								<label>
+									Loan View
+									<select name="loanViewMode" id="loanViewMode">
+										<option value="summary" selected>Summary</option>
+										<option value="detailed">Detailed</option>
+									</select>
+								</label>
+							</div>
+
+							<div class="grid-3">
+								<label>
+									Sales Absorption Curve
+									<select name="salesCurve" id="salesCurve">
+										<option value="flat">Flat</option>
+										<option value="realistic" selected>Realistic (slow-peak-taper)</option>
+									</select>
+								</label>
+								<label>
+									Construction Drawdown Curve
+									<select name="costCurve" id="costCurve">
+										<option value="flat">Flat</option>
+										<option value="realistic" selected>Realistic (low-high-low)</option>
+									</select>
+								</label>
+								<label>
+									View Premium %
+									<input type="number" name="viewPremiumPct" min="0" max="40" step="0.5" value="0" />
+								</label>
+							</div>
+
+							<div class="grid-4">
+								<label>
+									Steel Esc Base %
+									<input type="number" name="steelEscalationBasePct" min="0" max="40" step="0.5" value="0" />
+								</label>
+								<label>
+									Steel Esc Optimistic %
+									<input type="number" name="steelEscalationOptimisticPct" min="0" max="40" step="0.5" value="0" />
+								</label>
+								<label>
+									Steel Esc Stressed %
+									<input type="number" name="steelEscalationStressedPct" min="0" max="40" step="0.5" value="0" />
+								</label>
+								<label>
+									Cement Escalation %
+									<input type="number" name="cementEscalationPct" min="0" max="40" step="0.5" value="0" />
+								</label>
+							</div>
+
+							<div class="grid-4">
+								<label>
+									Labor Esc Base %
+									<input type="number" name="laborEscalationBasePct" min="0" max="40" step="0.5" value="0" />
+								</label>
+								<label>
+									Labor Esc Optimistic %
+									<input type="number" name="laborEscalationOptimisticPct" min="0" max="40" step="0.5" value="0" />
+								</label>
+								<label>
+									Labor Esc Stressed %
+									<input type="number" name="laborEscalationStressedPct" min="0" max="40" step="0.5" value="0" />
+								</label>
+								<label>
+									MEP Escalation %
+									<input type="number" name="mepEscalationPct" min="0" max="40" step="0.5" value="0" />
+								</label>
+							</div>
+
+							<button class="primary" type="submit">Generate Full Analysis</button>
+						</form>
+					</section>
+
+					<section class="output-card">
+						<div class="output-head">
+							<h2>Output</h2>
+							<div class="head-actions">
+								<button type="button" class="ghost" id="reportBtn">Investor Report</button>
+								<button type="button" class="ghost" id="auditBtn">Export Audit PDF</button>
+								<button type="button" class="ghost" id="stressBtn">Run Stress Test</button>
+								<button type="button" class="ghost" id="saveScenarioBtn">Save Scenario</button>
+								<button type="button" class="ghost" id="icMemoBtn">IC Memo</button>
+								<button type="button" class="ghost" id="saveCompareLeftBtn">Save Compare A</button>
+								<button type="button" class="ghost" id="saveCompareRightBtn">Save Compare B</button>
+								<button type="button" class="ghost" id="clearCompareBtn">Clear Compare</button>
+							</div>
+						</div>
+
+						<div class="smart-tools">
+							<label>
+								Scenario Library
+								<select id="savedScenarioSelect"></select>
+							</label>
+							<button type="button" class="ghost" id="applySavedScenarioBtn">Apply Saved Scenario</button>
+							<button type="button" class="ghost" id="renameSavedScenarioBtn">Rename Saved Scenario</button>
+						</div>
+
+						<div id="riskPanel" class="risk-panel"></div>
+						<div id="validationPanel" class="compare-panel hidden"></div>
+						<div id="tracePanel" class="compare-panel hidden"></div>
+						<div id="riskScorePanel" class="risk-score-panel"></div>
+						<div id="guardrailPanel" class="compare-panel hidden"></div>
+						<div id="pricingPanel" class="pricing-panel"></div>
+						<div id="stressPanel" class="compare-panel hidden"></div>
+						<div id="bankabilityPanel" class="compare-panel hidden"></div>
+						<div id="workingCapitalPanel" class="compare-panel hidden"></div>
+						<div id="visualInsightsPanel" class="compare-panel hidden"></div>
+						<div id="trendPanel" class="compare-panel hidden"></div>
+						<div id="delayImpactPanel" class="compare-panel hidden"></div>
+						<div id="taxFeePanel" class="compare-panel hidden"></div>
+						<div id="mixPanel" class="mix-panel hidden"></div>
+						<div id="comparePanel" class="compare-panel hidden"></div>
+						<div id="summary" class="summary"></div>
+						<div id="splitBar" class="split-bar"></div>
+						<div id="waterfallPanel" class="waterfall-panel"></div>
+						<div id="scenarioCards" class="scenarios"></div>
+						<div id="phasePanel" class="phase-panel hidden"></div>
+						<div id="loanSchedulePanel" class="loan-panel hidden"></div>
+						<div id="cashflowPanel" class="cashflow-panel hidden"></div>
+						<div id="heatmapPanel" class="heatmap-panel hidden"></div>
+						<div id="icMemoPanel" class="compare-panel hidden"></div>
+
+						<div class="table-wrap">
+							<table>
+								<thead>
+									<tr>
+										<th>Category</th>
+										<th>Item</th>
+										<th>Unit</th>
+										<th>Qty</th>
+										<th>Rate</th>
+										<th>Amount</th>
+									</tr>
+								</thead>
+								<tbody id="boqBody"></tbody>
+								<tfoot>
+									<tr>
+										<td colspan="5">Construction Grand Total</td>
+										<td id="grandTotal">Rs 0</td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+
+						<p class="disclaimer">
+							<strong>Legal Disclaimer:</strong> OptiBuild is provided for preliminary planning, estimation, and scenario analysis only and does not constitute legal, engineering, architectural, valuation, investment, lending, tax, or regulatory advice. Outputs are model-based approximations and are not guaranteed for accuracy, completeness, fitness for purpose, or future performance. Users are solely responsible for independent verification and final decisions, including compliance with applicable municipal rules, Gujarat RERA requirements, title/approval status, market data, contract terms, and consultant-certified structural/MEP designs. Use of this tool is at your own risk.
+						</p>
+					</section>
+				</div>
+			</section>
+
+			<footer class="site-footer container" aria-label="Footer brand">
+				<p class="footer-brand">VORCO</p>
+			</footer>
+
+		</div>
+
+		<script src="app.js"></script>
+	</body>
+</html>
